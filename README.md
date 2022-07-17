@@ -1,10 +1,10 @@
 # yt-dlp-pytkinter-mp3
-KISS GUI for yt-dlp designed for non-terminal people to get mp3s from youtube
+KISS GUIs for yt-dlp designed for non-terminal people to get mp3s or mp4s from youtube
 
 # Requirements
 - Python3 with Tkinter
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
-- "~/MUZYKA" directory created (to be changed soon I think)
+- "~/MUZYKA" (mp3) or "~/FILMY" (mp4) directory created 
 
 # How to use
 plug'n'play
