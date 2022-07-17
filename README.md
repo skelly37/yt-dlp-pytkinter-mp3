@@ -8,6 +8,3 @@ KISS GUI for yt-dlp designed for non-terminal people to get mp3s from youtube
 
 # How to use
 plug'n'play
-
-# Note
-It doesn't validate the links (yet). As long as you enter anything, it'll *work*.
