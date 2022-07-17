@@ -1,8 +1,10 @@
 import tkinter as tk
-from tkinter.messagebox import showinfo
-from os import system
+from tkinter.messagebox import showinfo, showerror
+import os 
 
-PATH = "~/MUZYKA"
+import yt_dlp
+
+PATH = os.path.expanduser("~/MUZYKA")
 
 class AppGUI:
 	def __init__(self):
@@ -38,10 +40,24 @@ class AppGUI:
 
 	def convert(self):
 		link = self.link_entry.get()
-		if len(link) > 0:
-			system(f"cd {PATH}; yt-dlp -f 'ba' -x --audio-format mp3 {link}")
-			showinfo("", "Piosenka pobrana.")
-		else:
-			showinfo("", "Podaj link.")
 
+		ydl_opts = {
+    		'format': 'mp3/bestaudio/best',
+    		'postprocessors': [{
+        		'key': 'FFmpegExtractAudio',
+        		'preferredcodec': 'mp3',
+   	 	}]
+   	 	}
+
+		if len(link) > 0:
+			try:
+				with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+					ydl.download(link)
+					showinfo("Sukces", "Piosenka pobrana")
+			except:
+				showerror("Blad", "Nieprawidlowy link")			
+		else:
+			showerror("Blad", "Podaj link.")
+
+os.chdir(PATH)
 AppGUI()
